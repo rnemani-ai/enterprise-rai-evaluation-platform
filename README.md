@@ -12,6 +12,41 @@ The objective is not to replace human judgment but to provide structured evaluat
 
 ---
 
+## Documentation
+
+* [Architecture](docs/architecture/enterprise_architecture.md)
+* [Evaluation Workflow](docs/architecture/evaluation_workflow.md)
+* [Evaluator Catalog](docs/evaluator_catalog.md)
+
+---
+
+## Enterprise Architecture
+
+The platform follows a risk-domain driven architecture designed to evaluate multiple Generative AI applications using a common Responsible AI framework.
+
+### Core Design Principles
+
+* Application Agnostic
+* Risk Based
+* Extensible
+* Governance Ready
+* Evidence Driven
+* Human Oversight
+
+The architecture separates:
+
+1. Evaluation orchestration
+2. Risk-domain evaluators
+3. Risk scoring and aggregation
+4. Evidence generation
+5. Governance workflows
+
+This separation enables organizations to evaluate diverse AI applications while maintaining consistent Responsible AI standards.
+
+![Enterprise Responsible AI Evaluation Platform](docs/architecture/enterprise_rai_platform_architecture.png)
+
+---
+
 ## Why This Project?
 
 Many Generative AI initiatives focus heavily on model selection, prompting strategies, and application development while giving limited attention to systematic evaluation and risk assessment.
@@ -39,12 +74,12 @@ The project demonstrates practical concepts including:
 
 Enterprises are rapidly deploying Generative AI solutions across multiple business functions including:
 
-* Customer service
-* Knowledge management
-* Document processing
-* Operations support
-* Decision assistance
-* Internal productivity tools
+* Customer Service
+* Knowledge Management
+* Document Processing
+* Operations Support
+* Decision Assistance
+* Internal Productivity Tools
 
 Each application introduces potential risks that may impact business outcomes, customer trust, regulatory compliance, and organizational reputation.
 
@@ -77,11 +112,11 @@ Building a reusable Responsible AI evaluation capability introduces several chal
 
 Organizations deploy multiple forms of Generative AI applications including:
 
-* RAG assistants
-* Customer support chatbots
-* Document intelligence systems
-* Workflow assistants
-* Agentic AI systems
+* RAG Assistants
+* Customer Support Chatbots
+* Document Intelligence Systems
+* Workflow Assistants
+* Agentic AI Systems
 
 Each application behaves differently while sharing common Responsible AI risks.
 
@@ -102,6 +137,8 @@ Organizations need a common language for evaluating and communicating AI risk ac
 ## Proposed Solution
 
 The proposed solution is an Enterprise Responsible AI Evaluation Platform designed around reusable risk domains rather than application-specific evaluation logic.
+
+The platform evaluates AI systems across reusable risk domains and aggregates results into standardized risk assessments that support governance, reporting, and human decision-making.
 
 The platform evaluates AI systems across standardized categories including:
 
@@ -135,10 +172,10 @@ Instead, the platform evaluates common risk domains that apply across multiple a
 
 A hallucination remains a hallucination whether it originates from:
 
-* A chatbot
-* A RAG assistant
-* A document processing workflow
-* An AI agent
+* A Chatbot
+* A RAG Assistant
+* A Document Processing Workflow
+* An AI Agent
 
 Organizing evaluations around risk domains creates a reusable and extensible architecture.
 
@@ -197,6 +234,17 @@ Planned evaluators:
 * Toxicity Detection
 * PII Leakage Detection
 
+### Security (Future Phase)
+
+Evaluates adversarial and security-related risks associated with Generative AI systems.
+
+Planned evaluators:
+
+* Prompt Injection Detection
+* Jailbreak Detection
+* Secrets Exposure Detection
+* Data Leakage Analysis
+
 ---
 
 ## Repository Structure
@@ -205,10 +253,26 @@ Planned evaluators:
 enterprise-rai-evaluation-platform/
 
 ├── README.md
+│
 ├── docs/
+│   ├── architecture/
+│   ├── design_decisions/
+│   └── evaluator_catalog.md
+│
 ├── evaluators/
+│   ├── truthfulness/
+│   ├── reliability/
+│   ├── fairness/
+│   └── safety/
+│
+├── orchestration/
+│
+├── risk_engine/
+│
 ├── datasets/
+│
 ├── examples/
+│
 └── tests/
 ```
 
@@ -216,21 +280,39 @@ enterprise-rai-evaluation-platform/
 
 ## Current Status
 
-### Completed
+### Phase 1 (Current Scope)
+
+#### Architecture & Design
 
 * Project vision
 * Business problem definition
-* Initial architecture design
-* Risk domain definition
-* Repository structure design
-* Phase 1 roadmap
+* Enterprise architecture
+* Evaluation workflow
+* Evaluator catalog
+* Risk domain definitions
+
+#### Framework Components
+
+* EvaluationResult contract
+* BaseEvaluator abstraction
+* GroundednessEvaluator (initial implementation)
+* Evaluation Orchestrator
+* Risk Aggregation Engine
+
+#### Documentation
+
+* Architecture documentation
+* Evaluation workflow documentation
+* Evaluator catalog
 
 ### In Progress
 
-* Evaluation framework design
-* Dataset design
-* Evaluator implementation
-* Architecture documentation
+* Groundedness evaluation logic
+* Hallucination evaluator
+* Demographic bias evaluator
+* PII leakage evaluator
+* Domain-level risk scoring
+* Test datasets
 
 ---
 
@@ -238,61 +320,52 @@ enterprise-rai-evaluation-platform/
 
 ### Phase 1 – Core Responsible AI Evaluation
 
-#### Truthfulness
+Current implementation scope:
 
-* Groundedness
-* Hallucination Detection
-* Answer Relevance
-* Citation Accuracy
+* Evaluation Orchestrator
+* Evaluator Engine
+* Risk Scoring Engine
+* Truthfulness Domain
+* Reliability Domain
+* Fairness Domain
+* Safety Domain
+* Evaluator Library
+* Evaluation Datasets
 
-#### Reliability
+### Phase 2 – Reporting & Evidence
 
-* Consistency
-* Robustness
-* Completeness
+Planned:
 
-#### Fairness
-
-* Demographic Bias
-* Fairness Consistency
-
-#### Safety
-
-* Toxicity Detection
-* PII Leakage Detection
-
-### Phase 2 – Security Evaluations
-
-* Prompt Injection Detection
-* Jailbreak Detection
-* Data Leakage Analysis
-* Secrets Exposure Detection
-
-### Phase 3 – Agent Evaluations
-
-* Tool Selection Accuracy
-* Task Completion Evaluation
-* Multi-Step Workflow Validation
-* Agent Reliability Assessment
-
-### Phase 4 – Governance
-
-* Risk Classification
 * Evaluation Reports
-* Audit Support
+* Evidence Repository
+* Storage Layer
+* Dashboards
+* Advanced Integrations
+
+### Phase 3 – Governance & Human Oversight
+
+Planned:
+
+* Governance Workflow
+* Human Review & Approvals
+* Audit Logs
+* Compliance Reporting
+* Enterprise Governance Dashboard
+
+### Phase 4 – Monitoring & Operations
+
+Planned:
+
+* Monitoring & Observability
 * Model Registry Integration
-
-### Phase 5 – Monitoring
-
+* CI/CD Automation
 * Continuous Evaluation
-* Risk Trend Analysis
-* Drift Detection
-* Alerting and Monitoring
+* Alerting & Notifications
 
 ---
 
 ## Disclaimer
 
-This repository is a learning and portfolio project intended to demonstrate enterprise Responsible AI architecture, evaluation frameworks, and governance concepts.
+This repository is a learning and portfolio project intended to demonstrate enterprise Responsible AI architecture, evaluation frameworks, governance concepts, and risk-based evaluation strategies.
 
-The implementation is not intended for production use without additional security, governance, observability, compliance, and operational controls.
+The implementation is not intended for production use without additional security, governance, observability, compliance, privacy, and operational controls.
