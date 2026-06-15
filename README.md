@@ -43,7 +43,7 @@ The architecture separates:
 
 This separation enables organizations to evaluate diverse AI applications while maintaining consistent Responsible AI standards.
 
-![Enterprise Responsible AI Evaluation Platform](docs/architecture/enterprise_rai_platform_architecture.png)
+![Enterprise Responsible AI Evaluation Platform](docs/architecture/enterprise_rai.png)
 
 ---
 
