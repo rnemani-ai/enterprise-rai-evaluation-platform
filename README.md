@@ -16,7 +16,7 @@ The objective is not to replace human judgment but to provide structured evaluat
 
 * [Architecture](docs/architecture/enterprise_architecture.md)
 * [Evaluation Workflow](docs/architecture/evaluation_workflow.md)
-* [Evaluator Catalog](docs/evaluator_catalog.md)
+* [Evaluator Catalog](docs/evaluators/evaluator_catalog.md)
 
 ---
 
