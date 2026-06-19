@@ -1,6 +1,7 @@
 from difflib import SequenceMatcher
 
 from core.base_evaluator import BaseEvaluator
+from core.evaluation_request import EvaluationRequest
 from core.evaluation_result import EvaluationResult
 from core.risk_level import RiskLevel
 
@@ -12,20 +13,17 @@ class HallucinationEvaluator(BaseEvaluator):
 
     def evaluate(
         self,
-        question: str,
-        answer: str,
-        context: str | None = None,
-        **kwargs,
+        request: EvaluationRequest,
     ) -> EvaluationResult:
 
-        if context is None:
-            similarity = 0.0
-        else:
-            similarity = SequenceMatcher(
-                None,
-                context.lower(),
-                answer.lower(),
-            ).ratio()
+        context = request.context or ""
+        answer = request.answer
+
+        similarity = SequenceMatcher(
+            None,
+            context.lower(),
+            answer.lower(),
+        ).ratio()
 
         passed = similarity >= 0.75
 
@@ -37,7 +35,7 @@ class HallucinationEvaluator(BaseEvaluator):
             risk = RiskLevel.HIGH
 
         explanation = (
-            "Answer is supported by the provided context."
+            "Answer is well supported by the provided context."
             if passed
             else "Potential hallucination detected."
         )
@@ -53,9 +51,9 @@ class HallucinationEvaluator(BaseEvaluator):
             ],
             confidence=0.90,
             metadata={
-                "evaluation_version": "V1",
                 "algorithm": "SequenceMatcher",
                 "evaluation_type": "Rule-Based",
+                "evaluation_version": "V1",
             },
             execution_time_ms=1.0,
         )

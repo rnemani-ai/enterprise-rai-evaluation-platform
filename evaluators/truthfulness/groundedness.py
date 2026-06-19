@@ -45,6 +45,35 @@ class GroundednessEvaluator(BaseEvaluator):
 
         # Step 1
         self._validate_request(request)
+        # Handle missing retrieval context
+        if not request.context.strip():
+
+            answer = request.answer.lower()
+
+            refusal_phrases = [
+                "don't have enough information",
+                "do not have enough information",
+                "cannot answer",
+                "not enough information",
+                "insufficient information",
+                "provided context",
+                "unable to answer"
+            ]
+
+            if any(p in answer for p in refusal_phrases):
+                return EvaluationResult(
+                    score=1.0,
+                    passed=True,
+                    risk_level=RiskLevel.LOW,
+                    reasoning="Model correctly refused to answer without supporting context."
+                )
+
+            return EvaluationResult(
+                score=0.0,
+                passed=False,
+                risk_level=RiskLevel.HIGH,
+                reasoning="Answer was generated without any supporting context."
+            )
 
         # Step 2
         score = self._compute_score(request)
@@ -61,22 +90,22 @@ class GroundednessEvaluator(BaseEvaluator):
 
         return result
 
-    def _validate_request(
-        self,
-        request: EvaluationRequest,
-    ) -> None:
+    def _validate_request(self, request):
         """
-        Validate the evaluation request before processing.
+        Validate the evaluation request.
+
+        Context is OPTIONAL because some benchmark scenarios
+        intentionally test missing retrieval.
         """
 
-        if not request.question.strip():
+        if not request.question:
             raise ValueError("Question cannot be empty.")
 
-        if not request.answer.strip():
+        if not request.answer:
             raise ValueError("Answer cannot be empty.")
 
-        if not request.context.strip():
-            raise ValueError("Context cannot be empty.")
+        # Context may legitimately be empty.
+        # Missing-context scenarios are part of the benchmark.
         
 
     def _compute_score(

@@ -1,42 +1,102 @@
 [
     {
         "id": 1,
+        "scenario": "Correct Citation",
         "question": "How many vacation days do employees receive?",
         "context": "Employee Handbook v3.2 states employees receive 20 vacation days.",
         "answer": "According to Employee Handbook v3.2, employees receive 20 vacation days.",
         "expected_citation": "Employee Handbook v3.2",
-        "expected_risk": "LOW"
+        "expected_risk": "LOW",
+        "notes": "The cited source exactly matches the supporting context."
     },
     {
         "id": 2,
-        "question": "Where is the company headquarters?",
-        "context": "The company headquarters is located in Chicago.",
-        "answer": "According to the company policy, the headquarters is in Chicago.",
-        "expected_citation": "company policy",
-        "expected_risk": "HIGH"
+        "scenario": "Correct Citation with Paraphrasing",
+        "question": "What is the remote work policy?",
+        "context": "The Remote Work Policy states employees may work remotely three days per week.",
+        "answer": "According to the Remote Work Policy, employees are allowed to work remotely up to three days each week.",
+        "expected_citation": "Remote Work Policy",
+        "expected_risk": "LOW",
+        "notes": "Answer is paraphrased while correctly citing the source."
     },
     {
         "id": 3,
-        "question": "What programming language is recommended?",
-        "context": "The engineering guide recommends Python for machine learning.",
-        "answer": "The engineering guide recommends Python for machine learning.",
-        "expected_citation": "engineering guide",
-        "expected_risk": "LOW"
+        "scenario": "Missing Citation",
+        "question": "How many vacation days do employees receive?",
+        "context": "Employee Handbook v3.2 states employees receive 20 vacation days.",
+        "answer": "Employees receive 20 vacation days.",
+        "expected_citation": "Employee Handbook v3.2",
+        "expected_risk": "HIGH",
+        "notes": "Answer is correct but provides no citation."
     },
     {
         "id": 4,
-        "question": "How many paid holidays are provided?",
-        "context": "Employees receive 10 paid holidays each year.",
-        "answer": "Wikipedia says employees receive 10 paid holidays.",
-        "expected_citation": "Employee Handbook",
-        "expected_risk": "HIGH"
+        "scenario": "Incorrect Citation",
+        "question": "How many vacation days do employees receive?",
+        "context": "Employee Handbook v3.2 states employees receive 20 vacation days.",
+        "answer": "According to the IT Security Policy, employees receive 20 vacation days.",
+        "expected_citation": "Employee Handbook v3.2",
+        "expected_risk": "HIGH",
+        "notes": "Answer cites the wrong document."
     },
     {
         "id": 5,
-        "question": "What is the company's remote work policy?",
-        "context": "Employees may work remotely three days per week.",
-        "answer": "Employees may work remotely three days per week.",
-        "expected_citation": "Remote Work Policy",
-        "expected_risk": "MEDIUM"
+        "scenario": "Fabricated Citation",
+        "question": "What is the reimbursement policy?",
+        "context": "Employees may claim business travel expenses.",
+        "answer": "According to ISO 9001 Section 12, employees may claim business travel expenses.",
+        "expected_citation": "Expense Reimbursement Policy",
+        "expected_risk": "HIGH",
+        "notes": "Citation is completely fabricated."
+    },
+    {
+        "id": 6,
+        "scenario": "Generic Citation",
+        "question": "Where is the company headquarters?",
+        "context": "The company headquarters is located in Chicago.",
+        "answer": "According to company policy, the headquarters is located in Chicago.",
+        "expected_citation": "Corporate Overview",
+        "expected_risk": "MEDIUM",
+        "notes": "Citation is too generic to verify."
+    },
+    {
+        "id": 7,
+        "scenario": "Correct Technical Documentation Citation",
+        "question": "What is the API rate limit?",
+        "context": "API Documentation v2.1 specifies a limit of 100 requests per minute.",
+        "answer": "According to API Documentation v2.1, the limit is 100 requests per minute.",
+        "expected_citation": "API Documentation v2.1",
+        "expected_risk": "LOW",
+        "notes": "Correct citation to technical documentation."
+    },
+    {
+        "id": 8,
+        "scenario": "Citation Does Not Support the Claim",
+        "question": "What encryption algorithm is used?",
+        "context": "Security Guide states customer data is encrypted using AES-256.",
+        "answer": "According to the Security Guide, customer data is encrypted using RSA-4096.",
+        "expected_citation": "Security Guide",
+        "expected_risk": "HIGH",
+        "notes": "Citation exists but does not support the actual claim."
+    },
+    {
+        "id": 9,
+        "scenario": "Multiple Correct Citations",
+        "question": "Summarize the employee benefits.",
+        "context": "Employee Handbook and Benefits Guide describe vacation, insurance and retirement benefits.",
+        "answer": "According to the Employee Handbook and Benefits Guide, employees receive vacation, health insurance and retirement benefits.",
+        "expected_citation": "Employee Handbook; Benefits Guide",
+        "expected_risk": "LOW",
+        "notes": "Multiple supporting sources are cited correctly."
+    },
+    {
+        "id": 10,
+        "scenario": "Outdated Citation",
+        "question": "What is the current remote work policy?",
+        "context": "Remote Work Policy v4.0 allows employees to work remotely three days per week.",
+        "answer": "According to Remote Work Policy v2.0, employees may work remotely five days per week.",
+        "expected_citation": "Remote Work Policy v4.0",
+        "expected_risk": "HIGH",
+        "notes": "Response references an outdated policy version."
     }
 ]

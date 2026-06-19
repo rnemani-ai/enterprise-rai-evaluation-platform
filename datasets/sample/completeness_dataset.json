@@ -1,62 +1,92 @@
 [
     {
         "id": 1,
-        "question": "What benefits do employees receive?",
-        "context": "Employees receive health insurance, dental insurance, and vision insurance.",
-        "answer": "Employees receive health insurance, dental insurance, and vision insurance.",
-        "expected_items": [
-            "health insurance",
-            "dental insurance",
-            "vision insurance"
-        ],
-        "expected_risk": "LOW"
+        "scenario": "Complete Answer",
+        "question": "What employee benefits are provided?",
+        "context": "Employees receive health insurance, dental insurance, vision insurance and life insurance.",
+        "answer": "Employees receive health insurance, dental insurance, vision insurance and life insurance.",
+        "expected_risk": "LOW",
+        "notes": "All expected information is present."
     },
     {
         "id": 2,
-        "question": "What benefits do employees receive?",
-        "context": "Employees receive health insurance, dental insurance, and vision insurance.",
-        "answer": "Employees receive health insurance.",
-        "expected_items": [
-            "health insurance",
-            "dental insurance",
-            "vision insurance"
-        ],
-        "expected_risk": "HIGH"
+        "scenario": "Missing One Item",
+        "question": "What employee benefits are provided?",
+        "context": "Employees receive health insurance, dental insurance, vision insurance and life insurance.",
+        "answer": "Employees receive health insurance, dental insurance and vision insurance.",
+        "expected_risk": "MEDIUM",
+        "notes": "One important benefit is omitted."
     },
     {
         "id": 3,
-        "question": "What documents are required?",
-        "context": "Employees must submit a passport, driver's license, and signed offer letter.",
-        "answer": "Employees must submit a passport and signed offer letter.",
-        "expected_items": [
-            "passport",
-            "driver's license",
-            "signed offer letter"
-        ],
-        "expected_risk": "MEDIUM"
+        "scenario": "Highly Incomplete",
+        "question": "What employee benefits are provided?",
+        "context": "Employees receive health insurance, dental insurance, vision insurance and life insurance.",
+        "answer": "Employees receive health insurance.",
+        "expected_risk": "HIGH",
+        "notes": "Majority of required information is missing."
     },
     {
         "id": 4,
-        "question": "What programming languages are supported?",
-        "context": "Python, Java, and SQL are officially supported.",
-        "answer": "Python, Java, and SQL are officially supported.",
-        "expected_items": [
-            "Python",
-            "Java",
-            "SQL"
-        ],
-        "expected_risk": "LOW"
+        "scenario": "Fully Complete Technical Documentation",
+        "question": "Which databases are supported?",
+        "context": "The platform supports PostgreSQL, SQL Server, MySQL and Oracle.",
+        "answer": "The platform supports PostgreSQL, SQL Server, MySQL and Oracle.",
+        "expected_risk": "LOW",
+        "notes": "Complete technical response."
     },
     {
         "id": 5,
-        "question": "Which cloud providers are supported?",
-        "context": "Azure, AWS, and GCP are supported.",
-        "answer": "Azure and AWS are supported.",
-        "expected_items": [
-            "Azure",
-            "AWS",
-            "GCP"
-        ],
-        "expected_risk": "MEDIUM"
+        "scenario": "Partial Technical Response",
+        "question": "Which databases are supported?",
+        "context": "The platform supports PostgreSQL, SQL Server, MySQL and Oracle.",
+        "answer": "The platform supports PostgreSQL and MySQL.",
+        "expected_risk": "MEDIUM",
+        "notes": "Some supported databases are omitted."
+    },
+    {
+        "id": 6,
+        "scenario": "Truncated Response",
+        "question": "How do I submit an expense report?",
+        "context": "Employees must upload receipts, complete the expense form and submit it through Workday.",
+        "answer": "Employees must upload receipts...",
+        "expected_risk": "HIGH",
+        "notes": "Answer appears incomplete or truncated."
+    },
+    {
+        "id": 7,
+        "scenario": "Complete HR Policy",
+        "question": "What documents are required for onboarding?",
+        "context": "Employees must submit a passport, driver's license and signed offer letter.",
+        "answer": "Employees must submit a passport, driver's license and signed offer letter.",
+        "expected_risk": "LOW",
+        "notes": "All required documents are included."
+    },
+    {
+        "id": 8,
+        "scenario": "Missing Critical Requirement",
+        "question": "What documents are required for onboarding?",
+        "context": "Employees must submit a passport, driver's license and signed offer letter.",
+        "answer": "Employees must submit a passport and driver's license.",
+        "expected_risk": "MEDIUM",
+        "notes": "Signed offer letter is omitted."
+    },
+    {
+        "id": 9,
+        "scenario": "Overly Brief Response",
+        "question": "Explain the remote work policy.",
+        "context": "Employees may work remotely three days per week with manager approval.",
+        "answer": "Remote work is allowed.",
+        "expected_risk": "MEDIUM",
+        "notes": "Technically correct but lacks important details."
+    },
+    {
+        "id": 10,
+        "scenario": "Completely Complete Enterprise Response",
+        "question": "How should employees report security incidents?",
+        "context": "Employees should immediately notify the Security Operations Center, submit an incident ticket and inform their manager.",
+        "answer": "Employees should immediately notify the Security Operations Center, submit an incident ticket and inform their manager.",
+        "expected_risk": "LOW",
+        "notes": "Response contains every required step."
     }
 ]

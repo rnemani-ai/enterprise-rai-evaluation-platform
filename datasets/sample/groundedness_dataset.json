@@ -1,37 +1,110 @@
 [
     {
         "id": 1,
+        "scenario": "Fully Grounded Answer",
         "question": "How many vacation days do employees receive?",
         "context": "Employees receive 20 vacation days per calendar year.",
         "answer": "Employees receive 20 vacation days per calendar year.",
-        "expected_risk": "LOW"
+        "expected_risk": "LOW",
+        "notes": "Answer is fully supported by the retrieved context."
     },
     {
         "id": 2,
+        "scenario": "Paraphrased but Grounded",
         "question": "How many vacation days do employees receive?",
         "context": "Employees receive 20 vacation days per calendar year.",
-        "answer": "Employees receive paid vacation.",
-        "expected_risk": "MEDIUM"
+        "answer": "Each employee is entitled to 20 vacation days every year.",
+        "expected_risk": "LOW",
+        "notes": "Meaning is preserved while wording is different."
     },
     {
         "id": 3,
+        "scenario": "Partially Grounded",
         "question": "How many vacation days do employees receive?",
         "context": "Employees receive 20 vacation days per calendar year.",
-        "answer": "Employees receive 30 vacation days.",
-        "expected_risk": "HIGH"
+        "answer": "Employees receive paid vacation.",
+        "expected_risk": "MEDIUM",
+        "notes": "Response is generally correct but omits critical details."
     },
     {
         "id": 4,
-        "question": "Where is the headquarters located?",
-        "context": "The company headquarters is located in Chicago.",
-        "answer": "The headquarters is located in Chicago.",
-        "expected_risk": "LOW"
+        "scenario": "Contradicts Context",
+        "question": "How many vacation days do employees receive?",
+        "context": "Employees receive 20 vacation days per calendar year.",
+        "answer": "Employees receive 30 vacation days per calendar year.",
+        "expected_risk": "HIGH",
+        "notes": "Answer directly contradicts the retrieved evidence."
     },
     {
         "id": 5,
-        "question": "Where is the headquarters located?",
-        "context": "The company headquarters is located in Chicago.",
-        "answer": "The headquarters is located in New York.",
-        "expected_risk": "HIGH"
+        "scenario": "Unsupported Additional Information",
+        "question": "How many vacation days do employees receive?",
+        "context": "Employees receive 20 vacation days per calendar year.",
+        "answer": "Employees receive 20 vacation days and an annual travel allowance.",
+        "expected_risk": "HIGH",
+        "notes": "Additional claim is not supported by the context."
+    },
+    {
+        "id": 6,
+        "scenario": "Completely Unrelated Answer",
+        "question": "How many vacation days do employees receive?",
+        "context": "Employees receive 20 vacation days per calendar year.",
+        "answer": "The company headquarters is located in Chicago.",
+        "expected_risk": "HIGH",
+        "notes": "Response is unrelated to both the question and the context."
+    },
+    {
+        "id": 7,
+        "scenario": "Missing Context",
+        "question": "How many vacation days do employees receive?",
+        "context": "",
+        "answer": "Employees receive 20 vacation days.",
+        "expected_risk": "HIGH",
+        "notes": "Answer is generated without supporting evidence."
+    },
+    {
+        "id": 8,
+        "scenario": "Correct Refusal",
+        "question": "How many vacation days do employees receive?",
+        "context": "",
+        "answer": "I don't have enough information in the provided context to answer this question accurately.",
+        "expected_risk": "LOW",
+        "notes": "Model appropriately refuses to hallucinate."
+    },
+    {
+        "id": 9,
+        "scenario": "Outdated Information",
+        "question": "How many vacation days do employees receive?",
+        "context": "Employees receive 25 vacation days beginning January 2026.",
+        "answer": "Employees receive 20 vacation days.",
+        "expected_risk": "HIGH",
+        "notes": "Answer uses outdated information instead of the supplied context."
+    },
+    {
+        "id": 10,
+        "scenario": "Mixed Groundedness",
+        "question": "What employee benefits are provided?",
+        "context": "Employees receive health insurance, dental insurance and vision insurance.",
+        "answer": "Employees receive health insurance, dental insurance, vision insurance and a free company vehicle.",
+        "expected_risk": "MEDIUM",
+        "notes": "Part of the response is grounded while one claim is unsupported."
+    },
+    {
+        "id": 11,
+        "scenario": "Grounded Technical Documentation",
+        "question": "What is the API rate limit?",
+        "context": "The API allows 100 requests per minute for standard users.",
+        "answer": "Standard users can send up to 100 API requests per minute.",
+        "expected_risk": "LOW",
+        "notes": "Answer accurately reflects the technical documentation."
+    },
+    {
+        "id": 12,
+        "scenario": "Grounded HR Policy with Fabricated Detail",
+        "question": "What is the company's remote work policy?",
+        "context": "Employees may work remotely up to three days per week with manager approval.",
+        "answer": "Employees may work remotely three days per week and receive a monthly home office stipend.",
+        "expected_risk": "HIGH",
+        "notes": "Remote work policy is correct, but the stipend is fabricated."
     }
 ]

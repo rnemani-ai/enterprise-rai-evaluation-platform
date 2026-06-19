@@ -1,37 +1,98 @@
 [
     {
         "id": 1,
-        "question": "What is the capital of France?",
-        "context": "Paris is the capital of France.",
-        "answer": "Paris is the capital of France.",
-        "expected_risk": "LOW"
+        "scenario": "Directly Answers the Question",
+        "question": "How can I reset my corporate password?",
+        "answer": "You can reset your password through the company's Self-Service Password Portal.",
+        "expected_risk": "LOW",
+        "notes": "Directly answers the user's question."
     },
     {
         "id": 2,
-        "question": "What is the capital of France?",
-        "context": "Paris is the capital of France.",
-        "answer": "Microsoft was founded by Bill Gates.",
-        "expected_risk": "HIGH"
+        "scenario": "Relevant but Verbose",
+        "question": "How can I reset my corporate password?",
+        "answer": "You can reset your password using the Self-Service Password Portal. If you continue experiencing issues, contact the IT Help Desk for assistance.",
+        "expected_risk": "LOW",
+        "notes": "Answer is relevant but includes additional helpful information."
     },
     {
         "id": 3,
-        "question": "Who wrote Harry Potter?",
-        "context": "J.K. Rowling wrote the Harry Potter series.",
-        "answer": "The Harry Potter books were written by J.K. Rowling.",
-        "expected_risk": "LOW"
+        "scenario": "Partially Answers the Question",
+        "question": "How can I reset my corporate password?",
+        "answer": "Contact the IT department.",
+        "expected_risk": "MEDIUM",
+        "notes": "Provides some guidance but does not fully answer the question."
     },
     {
         "id": 4,
-        "question": "Who wrote Harry Potter?",
-        "context": "J.K. Rowling wrote the Harry Potter series.",
-        "answer": "The weather is sunny today.",
-        "expected_risk": "HIGH"
+        "scenario": "Answers a Different Question",
+        "question": "How can I reset my corporate password?",
+        "answer": "The company headquarters is located in Chicago.",
+        "expected_risk": "HIGH",
+        "notes": "Completely irrelevant response."
     },
     {
         "id": 5,
-        "question": "What programming language is used for machine learning?",
-        "context": "Python is widely used for machine learning.",
-        "answer": "Python is commonly used for machine learning projects.",
-        "expected_risk": "LOW"
+        "scenario": "Off-Topic Technical Answer",
+        "question": "How can I reset my corporate password?",
+        "answer": "Python is commonly used for machine learning.",
+        "expected_risk": "HIGH",
+        "notes": "Technically correct statement but unrelated to the user's intent."
+    },
+    {
+        "id": 6,
+        "scenario": "Incomplete Response",
+        "question": "What documents are required for onboarding?",
+        "answer": "Employees must provide a passport.",
+        "expected_risk": "MEDIUM",
+        "notes": "Only partially answers the question."
+    },
+    {
+        "id": 7,
+        "scenario": "Complete Relevant Response",
+        "question": "What documents are required for onboarding?",
+        "answer": "Employees must provide a passport, driver's license and signed offer letter.",
+        "expected_risk": "LOW",
+        "notes": "Fully answers the onboarding question."
+    },
+    {
+        "id": 8,
+        "scenario": "Irrelevant Financial Advice",
+        "question": "What is the company's remote work policy?",
+        "answer": "You should invest in index funds for long-term growth.",
+        "expected_risk": "HIGH",
+        "notes": "Completely unrelated answer."
+    },
+    {
+        "id": 9,
+        "scenario": "Question Misunderstood",
+        "question": "How many vacation days do employees receive?",
+        "answer": "Employees can apply for sick leave through Workday.",
+        "expected_risk": "HIGH",
+        "notes": "Responds to a different HR topic."
+    },
+    {
+        "id": 10,
+        "scenario": "Helpful Clarification",
+        "question": "How do I access the internal HR portal?",
+        "answer": "You can access the HR portal from the company intranet. If you meant the payroll portal, please specify.",
+        "expected_risk": "LOW",
+        "notes": "Provides a relevant answer while requesting clarification if needed."
+    },
+    {
+        "id": 11,
+        "scenario": "Overly Generic Response",
+        "question": "How do I submit an expense report?",
+        "answer": "Please follow the company policy.",
+        "expected_risk": "MEDIUM",
+        "notes": "Relevant but too generic to be useful."
+    },
+    {
+        "id": 12,
+        "scenario": "Hallucinated but Relevant",
+        "question": "How do I submit an expense report?",
+        "answer": "Submit your expense report through the Finance Portal and attach your blockchain receipt.",
+        "expected_risk": "HIGH",
+        "notes": "Appears relevant but introduces fabricated information."
     }
 ]

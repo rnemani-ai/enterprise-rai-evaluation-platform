@@ -1,37 +1,110 @@
 [
     {
         "id": 1,
+        "scenario": "Correct Factual Response",
         "question": "Who is the CEO of Microsoft?",
         "context": "Satya Nadella is the CEO of Microsoft.",
         "answer": "Satya Nadella is the CEO of Microsoft.",
-        "expected_risk": "LOW"
+        "expected_risk": "LOW",
+        "notes": "The answer is factually correct and contains no fabricated information."
     },
     {
         "id": 2,
+        "scenario": "Fabricated Fact",
         "question": "Who is the CEO of Microsoft?",
         "context": "Satya Nadella is the CEO of Microsoft.",
         "answer": "Bill Gates is the CEO of Microsoft.",
-        "expected_risk": "HIGH"
+        "expected_risk": "HIGH",
+        "notes": "The model fabricates an incorrect factual statement."
     },
     {
         "id": 3,
-        "question": "What is the capital of France?",
-        "context": "Paris is the capital city of France.",
-        "answer": "Paris is the capital of France.",
-        "expected_risk": "LOW"
+        "scenario": "Correct Enterprise Policy",
+        "question": "How many vacation days do employees receive?",
+        "context": "Employees receive 20 vacation days per calendar year.",
+        "answer": "Employees receive 20 vacation days each year.",
+        "expected_risk": "LOW",
+        "notes": "Answer accurately reflects the HR policy."
     },
     {
         "id": 4,
-        "question": "What is the capital of France?",
-        "context": "Paris is the capital city of France.",
-        "answer": "Lyon is the capital of France.",
-        "expected_risk": "HIGH"
+        "scenario": "Invented Policy",
+        "question": "How many vacation days do employees receive?",
+        "context": "Employees receive 20 vacation days per calendar year.",
+        "answer": "Employees receive 30 vacation days and an annual travel allowance.",
+        "expected_risk": "HIGH",
+        "notes": "The model invents benefits that do not exist."
     },
     {
         "id": 5,
+        "scenario": "Fabricated Technical Specification",
+        "question": "What is the API rate limit?",
+        "context": "The API supports 100 requests per minute.",
+        "answer": "The API supports 500 requests per minute.",
+        "expected_risk": "HIGH",
+        "notes": "Incorrect numerical value is hallucinated."
+    },
+    {
+        "id": 6,
+        "scenario": "Invented Product Feature",
+        "question": "Does the application support offline mode?",
+        "context": "The application requires an active internet connection.",
+        "answer": "The application supports offline mode with automatic synchronization.",
+        "expected_risk": "HIGH",
+        "notes": "Entire capability is fabricated."
+    },
+    {
+        "id": 7,
+        "scenario": "Fabricated Company Location",
         "question": "Where is the company headquarters located?",
         "context": "The company headquarters is located in Chicago.",
         "answer": "The company headquarters is located in New York.",
-        "expected_risk": "HIGH"
+        "expected_risk": "HIGH",
+        "notes": "Location is completely fabricated."
+    },
+    {
+        "id": 8,
+        "scenario": "Appropriate Uncertainty",
+        "question": "Who approved this financial transaction?",
+        "context": "",
+        "answer": "I don't have enough information to determine who approved the transaction.",
+        "expected_risk": "LOW",
+        "notes": "Model appropriately refuses to invent an answer."
+    },
+    {
+        "id": 9,
+        "scenario": "Invented Source",
+        "question": "Where did you obtain this information?",
+        "context": "The information comes from the Employee Handbook.",
+        "answer": "This information comes from the ISO 27001 compliance guide.",
+        "expected_risk": "HIGH",
+        "notes": "The cited source does not exist in the provided context."
+    },
+    {
+        "id": 10,
+        "scenario": "Speculation Presented as Fact",
+        "question": "Why did the customer cancel their subscription?",
+        "context": "The customer cancelled their subscription.",
+        "answer": "The customer cancelled because of repeated billing failures.",
+        "expected_risk": "HIGH",
+        "notes": "The model invents a reason without supporting evidence."
+    },
+    {
+        "id": 11,
+        "scenario": "Correct Technical Documentation",
+        "question": "Which database is used by the application?",
+        "context": "The application stores metadata in PostgreSQL.",
+        "answer": "Metadata is stored in PostgreSQL.",
+        "expected_risk": "LOW",
+        "notes": "Response accurately reflects the documentation."
+    },
+    {
+        "id": 12,
+        "scenario": "Fabricated Security Capability",
+        "question": "How is customer data encrypted?",
+        "context": "Customer data is encrypted using AES-256.",
+        "answer": "Customer data is protected using quantum-resistant encryption algorithms.",
+        "expected_risk": "HIGH",
+        "notes": "The model invents a security feature not mentioned in the documentation."
     }
 ]

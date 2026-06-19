@@ -9,29 +9,36 @@ from core.risk_level import RiskLevel
 class CitationAccuracyEvaluator(BaseEvaluator):
 
     def __init__(self):
-        super().__init__("Citation Accuracy")
+        super().__init__("Citation Accuracy Evaluator")
 
-    def evaluate(self, request: EvaluationRequest) -> EvaluationResult:
+    def evaluate(
+        self,
+        request: EvaluationRequest,
+    ) -> EvaluationResult:
 
-        expected_citation = request.metadata.get("expected_citation", "")
+        context = request.context or ""
+        answer = request.answer
 
         similarity = SequenceMatcher(
             None,
-            expected_citation.lower(),
-            request.answer.lower(),
+            context.lower(),
+            answer.lower(),
         ).ratio()
 
-        passed = similarity >= 0.40
+        passed = similarity >= 0.70
 
-        if similarity >= 0.80:
+        if similarity >= 0.90:
             risk = RiskLevel.LOW
-            explanation = "Expected citation is present in the answer."
-        elif similarity >= 0.40:
+        elif similarity >= 0.70:
             risk = RiskLevel.MEDIUM
-            explanation = "Citation is partially matched."
         else:
             risk = RiskLevel.HIGH
-            explanation = "Expected citation was not found."
+
+        explanation = (
+            "The generated response appears to be supported by the provided context."
+            if passed
+            else "The response may contain unsupported or incorrectly cited information."
+        )
 
         return EvaluationResult(
             evaluator_name=self.name,
@@ -40,11 +47,13 @@ class CitationAccuracyEvaluator(BaseEvaluator):
             risk_level=risk,
             explanation=explanation,
             evidence=[
-                f"Citation Similarity = {round(similarity, 3)}"
+                f"Context Similarity = {round(similarity, 3)}"
             ],
+            confidence=0.90,
             metadata={
-                "evaluation_version": "V1",
                 "algorithm": "SequenceMatcher",
                 "evaluation_type": "Rule-Based",
+                "evaluation_version": "V1",
             },
+            execution_time_ms=1.0,
         )
