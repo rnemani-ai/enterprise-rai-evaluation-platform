@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "question": "Who is eligible for parental leave?",
+    "context": "Full-time employees who have completed at least 12 months of continuous employment are eligible for up to 12 weeks of paid parental leave.",
+    "answer": "Full-time employees with at least 12 months of continuous employment are eligible for up to 12 weeks of paid parental leave.",
+    "expected_groundedness": "High"
+  },
+  {
+    "id": 2,
+    "question": "Who is eligible for parental leave?",
+    "context": "Full-time employees who have completed at least 12 months of continuous employment are eligible for up to 12 weeks of paid parental leave.",
+    "answer": "All employees are eligible for 16 weeks of paid parental leave.",
+    "expected_groundedness": "Low"
+  },
+  {
+    "id": 3,
+    "question": "When does health insurance begin?",
+    "context": "Health insurance coverage begins on the first day of the month following the employee's start date.",
+    "answer": "Health insurance begins on the first day of the month following your start date.",
+    "expected_groundedness": "High"
+  },
+  {
+    "id": 4,
+    "question": "When does health insurance begin?",
+    "context": "Health insurance coverage begins on the first day of the month following the employee's start date.",
+    "answer": "Health insurance starts immediately on your first day of work.",
+    "expected_groundedness": "Low"
+  },
+  {
+    "id": 5,
+    "question": "Can employees work remotely?",
+    "context": "Employees may work remotely up to three days per week with manager approval.",
+    "answer": "Employees may work remotely up to three days per week with manager approval.",
+    "expected_groundedness": "High"
+  },
+  {
+    "id": 6,
+    "question": "Can employees work remotely?",
+    "context": "Employees may work remotely up to three days per week with manager approval.",
+    "answer": "Employees can work remotely five days a week without approval.",
+    "expected_groundedness": "Low"
+  },
+  {
+    "id": 7,
+    "question": "How many vacation days do employees receive?",
+    "context": "Employees receive 20 paid vacation days annually.",
+    "answer": "Employees receive 20 paid vacation days annually.",
+    "expected_groundedness": "High"
+  },
+  {
+    "id": 8,
+    "question": "How many vacation days do employees receive?",
+    "context": "Employees receive 20 paid vacation days annually.",
+    "answer": "Employees receive 30 paid vacation days annually.",
+    "expected_groundedness": "Low"
+  },
+  {
+    "id": 9,
+    "question": "Are dental benefits included?",
+    "context": "The company offers medical, dental, and vision insurance to all eligible employees.",
+    "answer": "Eligible employees receive medical, dental, and vision insurance.",
+    "expected_groundedness": "High"
+  },
+  {
+    "id": 10,
+    "question": "Are dental benefits included?",
+    "context": "The company offers medical, dental, and vision insurance to all eligible employees.",
+    "answer": "Only medical insurance is provided.",
+    "expected_groundedness": "Low"
+  }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "question": "What is the capital of France?",
+        "context": "Paris is the capital of France.",
+        "answer": "Paris is the capital of France.",
+        "expected_risk": "LOW"
+    },
+    {
+        "id": 2,
+        "question": "What is the capital of France?",
+        "context": "Paris is the capital of France.",
+        "answer": "Microsoft was founded by Bill Gates.",
+        "expected_risk": "HIGH"
+    },
+    {
+        "id": 3,
+        "question": "Who wrote Harry Potter?",
+        "context": "J.K. Rowling wrote the Harry Potter series.",
+        "answer": "The Harry Potter books were written by J.K. Rowling.",
+        "expected_risk": "LOW"
+    },
+    {
+        "id": 4,
+        "question": "Who wrote Harry Potter?",
+        "context": "J.K. Rowling wrote the Harry Potter series.",
+        "answer": "The weather is sunny today.",
+        "expected_risk": "HIGH"
+    },
+    {
+        "id": 5,
+        "question": "What programming language is used for machine learning?",
+        "context": "Python is widely used for machine learning.",
+        "answer": "Python is commonly used for machine learning projects.",
+        "expected_risk": "LOW"
+    }
+]

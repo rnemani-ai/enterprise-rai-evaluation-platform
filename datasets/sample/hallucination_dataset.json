@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "question": "Who is the CEO of Microsoft?",
+        "context": "Satya Nadella is the CEO of Microsoft.",
+        "answer": "Satya Nadella is the CEO of Microsoft.",
+        "expected_risk": "LOW"
+    },
+    {
+        "id": 2,
+        "question": "Who is the CEO of Microsoft?",
+        "context": "Satya Nadella is the CEO of Microsoft.",
+        "answer": "Bill Gates is the CEO of Microsoft.",
+        "expected_risk": "HIGH"
+    },
+    {
+        "id": 3,
+        "question": "What is the capital of France?",
+        "context": "Paris is the capital city of France.",
+        "answer": "Paris is the capital of France.",
+        "expected_risk": "LOW"
+    },
+    {
+        "id": 4,
+        "question": "What is the capital of France?",
+        "context": "Paris is the capital city of France.",
+        "answer": "Lyon is the capital of France.",
+        "expected_risk": "HIGH"
+    },
+    {
+        "id": 5,
+        "question": "Where is the company headquarters located?",
+        "context": "The company headquarters is located in Chicago.",
+        "answer": "The company headquarters is located in New York.",
+        "expected_risk": "HIGH"
+    }
+]

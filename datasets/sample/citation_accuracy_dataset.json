@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "question": "How many vacation days do employees receive?",
+        "context": "Employee Handbook v3.2 states employees receive 20 vacation days.",
+        "answer": "According to Employee Handbook v3.2, employees receive 20 vacation days.",
+        "expected_citation": "Employee Handbook v3.2",
+        "expected_risk": "LOW"
+    },
+    {
+        "id": 2,
+        "question": "Where is the company headquarters?",
+        "context": "The company headquarters is located in Chicago.",
+        "answer": "According to the company policy, the headquarters is in Chicago.",
+        "expected_citation": "company policy",
+        "expected_risk": "HIGH"
+    },
+    {
+        "id": 3,
+        "question": "What programming language is recommended?",
+        "context": "The engineering guide recommends Python for machine learning.",
+        "answer": "The engineering guide recommends Python for machine learning.",
+        "expected_citation": "engineering guide",
+        "expected_risk": "LOW"
+    },
+    {
+        "id": 4,
+        "question": "How many paid holidays are provided?",
+        "context": "Employees receive 10 paid holidays each year.",
+        "answer": "Wikipedia says employees receive 10 paid holidays.",
+        "expected_citation": "Employee Handbook",
+        "expected_risk": "HIGH"
+    },
+    {
+        "id": 5,
+        "question": "What is the company's remote work policy?",
+        "context": "Employees may work remotely three days per week.",
+        "answer": "Employees may work remotely three days per week.",
+        "expected_citation": "Remote Work Policy",
+        "expected_risk": "MEDIUM"
+    }
+]

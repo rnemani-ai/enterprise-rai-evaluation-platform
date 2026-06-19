@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "question": "What benefits do employees receive?",
+        "context": "Employees receive health insurance, dental insurance, and vision insurance.",
+        "answer": "Employees receive health insurance, dental insurance, and vision insurance.",
+        "expected_items": [
+            "health insurance",
+            "dental insurance",
+            "vision insurance"
+        ],
+        "expected_risk": "LOW"
+    },
+    {
+        "id": 2,
+        "question": "What benefits do employees receive?",
+        "context": "Employees receive health insurance, dental insurance, and vision insurance.",
+        "answer": "Employees receive health insurance.",
+        "expected_items": [
+            "health insurance",
+            "dental insurance",
+            "vision insurance"
+        ],
+        "expected_risk": "HIGH"
+    },
+    {
+        "id": 3,
+        "question": "What documents are required?",
+        "context": "Employees must submit a passport, driver's license, and signed offer letter.",
+        "answer": "Employees must submit a passport and signed offer letter.",
+        "expected_items": [
+            "passport",
+            "driver's license",
+            "signed offer letter"
+        ],
+        "expected_risk": "MEDIUM"
+    },
+    {
+        "id": 4,
+        "question": "What programming languages are supported?",
+        "context": "Python, Java, and SQL are officially supported.",
+        "answer": "Python, Java, and SQL are officially supported.",
+        "expected_items": [
+            "Python",
+            "Java",
+            "SQL"
+        ],
+        "expected_risk": "LOW"
+    },
+    {
+        "id": 5,
+        "question": "Which cloud providers are supported?",
+        "context": "Azure, AWS, and GCP are supported.",
+        "answer": "Azure and AWS are supported.",
+        "expected_items": [
+            "Azure",
+            "AWS",
+            "GCP"
+        ],
+        "expected_risk": "MEDIUM"
+    }
+]
