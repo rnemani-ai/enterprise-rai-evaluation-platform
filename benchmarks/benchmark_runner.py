@@ -18,6 +18,7 @@ class BenchmarkRunner:
 
         results = []
 
+        print("\n")
         print("=" * 70)
         print(f"Running Benchmark : {self.dataset.name}")
         print(f"Evaluator          : {self.evaluator.name}")
@@ -44,4 +45,51 @@ class BenchmarkRunner:
                 }
             )
 
+        self._print_summary(results)
+
         return results
+
+    def _print_summary(self, results):
+
+        total = len(results)
+
+        passed = sum(r["passed"] for r in results)
+
+        failed = total - passed
+
+        accuracy = (passed / total * 100) if total else 0
+
+        average_score = (
+            sum(r["score"] for r in results) / total
+            if total
+            else 0
+        )
+
+        print("\n")
+        print("=" * 70)
+        print("Benchmark Summary")
+        print("=" * 70)
+        print(f"Dataset Size  : {total}")
+        print(f"Passed        : {passed}")
+        print(f"Failed        : {failed}")
+        print(f"Accuracy      : {accuracy:.1f}%")
+        print(f"Average Score : {average_score:.3f}")
+
+        print("\nFailed Cases")
+        print("-" * 70)
+
+        failures = [r for r in results if not r["passed"]]
+
+        if not failures:
+            print("None")
+        else:
+            for item in failures:
+
+                print(
+                    f"ID {item['id']} | "
+                    f"Expected: {item['expected_risk']} | "
+                    f"Actual: {item['actual_risk']} | "
+                    f"Score: {item['score']:.3f}"
+                )
+
+        print("=" * 70)
