@@ -1,7 +1,7 @@
 import json
 
 from core.evaluation_request import EvaluationRequest
-from evaluators.safety.bias import BiasEvaluator
+from evaluators.fairness.bias import BiasEvaluator
 
 
 def main():

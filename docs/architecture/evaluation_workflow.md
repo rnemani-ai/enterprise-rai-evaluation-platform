@@ -12,11 +12,16 @@ Every evaluation follows the same standardized workflow regardless of the AI app
 
 # Evaluation Workflow
 
-> **Insert the Evaluation Workflow Diagram Here**
+<p align="center">
+  <img
+    src="../images/evaluation_workflow.png"
+    alt="Enterprise AI Evaluation Platform - Evaluation Workflow"
+    width="1000"/>
+</p>
 
-```text
-docs/images/evaluation_workflow.png
-```
+The diagram above illustrates the end-to-end evaluation lifecycle followed by the Enterprise AI Evaluation Platform. It shows how an evaluation request progresses through configuration, dataset preparation, evaluator execution, evidence collection, risk assessment, reporting, human review, deployment recommendation, and continuous learning.
+
+Unlike the High-Level Architecture, which describes the major platform capabilities, this workflow focuses on **how an evaluation moves through the platform** from start to finish.
 
 ---
 
@@ -348,10 +353,10 @@ Each architecture document focuses on a different perspective of the platform.
 
 | Document | Focus |
 |----------|-------|
-| Enterprise Architecture | Documentation overview |
-| High-Level Architecture | What the platform does |
-| Component-Level Architecture | How the platform is built |
-| Evaluation Workflow | How evaluations execute |
-| Architecture Walkthrough | How all components collaborate during execution |
+| [High-Level Architecture](high_level_architecture.md) | What the platform does |
+| [Component Architecture](component_architecture.md) | How the platform is built |
+| [Evaluation Workflow](evaluation_workflow.md) | How evaluations execute |
+| [Architecture Walkthrough](architecture_walkthrough.md) | How the platform components collaborate |
+| [Design Principles](design_principles.md) | Architectural decisions and engineering principles |
 
 Together, these documents provide a complete understanding of the Enterprise AI Evaluation Platform.

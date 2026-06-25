@@ -20,11 +20,18 @@ This enables organizations to apply a consistent evaluation framework across div
 
 # High-Level Architecture
 
-> **Insert the High-Level Architecture Diagram Here**
+<p align="center">
+  <img
+    src="../images/high_level_architecture.png"
+    alt="Enterprise AI Evaluation Platform - High Level Architecture"
+    width="1000"/>
+</p>
 
-```text
-docs/images/high_level_architecture.png
-```
+The diagram above illustrates the business and solution architecture view of the Enterprise AI Evaluation Platform.
+
+It shows how enterprise AI applications flow through a standardized evaluation lifecycle, from evaluation request and session management through evaluator execution, evidence collection, governance review, and deployment recommendation.
+
+The architecture is intentionally organized around reusable platform capabilities rather than application-specific implementations, enabling the same framework to be applied consistently across different AI systems.
 
 ---
 
@@ -55,6 +62,9 @@ Deployment Recommendation
 ```
 
 This standardized lifecycle ensures evaluations are reproducible, configurable, and consistent across multiple AI applications.
+
+```
+```
 
 ---
 

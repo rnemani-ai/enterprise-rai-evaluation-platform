@@ -10,6 +10,7 @@ Purpose:
 """
 
 from difflib import SequenceMatcher
+import re
 import time
 
 from core.base_evaluator import BaseEvaluator
@@ -22,12 +23,14 @@ class GroundednessEvaluator(BaseEvaluator):
     """
     Rule-based groundedness evaluator.
 
-    This evaluator provides the baseline implementation for
-    measuring whether a generated response is supported by
-    the retrieved context.
+    V1 combines:
+    - Lexical similarity
+    - Keyword overlap
+    - Missing context detection
 
-    Future versions will evolve through the Evaluator
-    Maturity Model.
+    Future versions may replace the scoring logic with
+    embedding similarity or LLM-as-a-Judge without changing
+    the evaluator interface.
     """
 
     def __init__(self):
@@ -37,107 +40,98 @@ class GroundednessEvaluator(BaseEvaluator):
         self,
         request: EvaluationRequest,
     ) -> EvaluationResult:
-        """
-        Execute groundedness evaluation.
-        """
 
         start_time = time.perf_counter()
 
-        # Step 1
         self._validate_request(request)
-        # Handle missing retrieval context
-        if not request.context.strip():
 
-            answer = request.answer.lower()
-
-            refusal_phrases = [
-                "don't have enough information",
-                "do not have enough information",
-                "cannot answer",
-                "not enough information",
-                "insufficient information",
-                "provided context",
-                "unable to answer"
-            ]
-
-            if any(p in answer for p in refusal_phrases):
-                return EvaluationResult(
-                    score=1.0,
-                    passed=True,
-                    risk_level=RiskLevel.LOW,
-                    reasoning="Model correctly refused to answer without supporting context."
-                )
-
-            return EvaluationResult(
-                score=0.0,
-                passed=False,
-                risk_level=RiskLevel.HIGH,
-                reasoning="Answer was generated without any supporting context."
-            )
-
-        # Step 2
         score = self._compute_score(request)
 
-        # Step 3
         risk = self._classify_risk(score)
 
-        # Step 4
-        result = self._build_result(
+        execution_time = (
+            time.perf_counter() - start_time
+        ) * 1000
+
+        return self._build_result(
             score=score,
             risk=risk,
-            execution_time_ms=(time.perf_counter() - start_time) * 1000,
+            execution_time_ms=execution_time,
         )
 
-        return result
+    def _validate_request(
+        self,
+        request: EvaluationRequest,
+    ) -> None:
 
-    def _validate_request(self, request):
-        """
-        Validate the evaluation request.
-
-        Context is OPTIONAL because some benchmark scenarios
-        intentionally test missing retrieval.
-        """
-
-        if not request.question:
+        if not request.question.strip():
             raise ValueError("Question cannot be empty.")
 
-        if not request.answer:
+        if not request.answer.strip():
             raise ValueError("Answer cannot be empty.")
-
-        # Context may legitimately be empty.
-        # Missing-context scenarios are part of the benchmark.
-        
 
     def _compute_score(
         self,
         request: EvaluationRequest,
     ) -> float:
-        """
-        Compute a groundedness score using lexical similarity
-        between the generated answer and the retrieved context.
 
-        Returns
-        -------
-        float
-            Similarity score between 0.0 and 1.0.
-        """
+        context = (request.context or "").strip()
 
-        similarity = SequenceMatcher(
+        if not context:
+
+            answer = request.answer.lower()
+
+            refusal_phrases = [
+                "don't know",
+                "do not know",
+                "not enough information",
+                "insufficient information",
+                "cannot answer",
+                "unable to answer",
+                "provided context",
+            ]
+
+            if any(
+                phrase in answer
+                for phrase in refusal_phrases
+            ):
+                return 1.0
+
+            return 0.0
+
+        lexical_score = SequenceMatcher(
             None,
             request.answer.lower(),
-            request.context.lower(),
+            context.lower(),
         ).ratio()
 
-        return round(similarity, 3)
+        answer_words = set(
+            re.findall(r"\w+", request.answer.lower())
+        )
+
+        context_words = set(
+            re.findall(r"\w+", context.lower())
+        )
+
+        if answer_words:
+            keyword_score = (
+                len(answer_words & context_words)
+                / len(answer_words)
+            )
+        else:
+            keyword_score = 0.0
+
+        score = (
+            lexical_score * 0.7
+            + keyword_score * 0.3
+        )
+
+        return round(score, 3)
 
     def _classify_risk(
         self,
         score: float,
     ) -> RiskLevel:
-        """
-        Classify the groundedness score into an enterprise
-        risk level.
-        """
 
         if score >= 0.85:
             return RiskLevel.LOW
@@ -153,26 +147,25 @@ class GroundednessEvaluator(BaseEvaluator):
         risk: RiskLevel,
         execution_time_ms: float,
     ) -> EvaluationResult:
-        """
-        Build the standardized evaluation result.
-        """
 
         passed = score >= 0.70
 
         if risk == RiskLevel.LOW:
             explanation = (
-                "The generated response is well supported by the "
-                "retrieved context."
+                "The generated answer is strongly supported "
+                "by the provided context."
             )
+
         elif risk == RiskLevel.MEDIUM:
             explanation = (
-                "The generated response is partially supported by the "
-                "retrieved context and may require human review."
+                "The generated answer is partially supported "
+                "by the provided context."
             )
+
         else:
             explanation = (
-                "The generated response has limited support from the "
-                "retrieved context and may contain unsupported claims."
+                "The generated answer is weakly supported "
+                "or contains unsupported information."
             )
 
         return EvaluationResult(
@@ -182,13 +175,19 @@ class GroundednessEvaluator(BaseEvaluator):
             risk_level=risk,
             explanation=explanation,
             evidence=[
-                f"Groundedness similarity score: {score:.3f}"
+                f"Groundedness Score = {score:.3f}"
             ],
             confidence=1.0,
             metadata={
                 "evaluation_version": "V1",
-                "algorithm": "SequenceMatcher",
-                "evaluation_type": "Rule-Based",
+                "algorithm": "Hybrid Rule-Based",
+                "components": [
+                    "Lexical Similarity",
+                    "Keyword Overlap",
+                ],
             },
-            execution_time_ms=round(execution_time_ms, 2),
+            execution_time_ms=round(
+                execution_time_ms,
+                2,
+            ),
         )

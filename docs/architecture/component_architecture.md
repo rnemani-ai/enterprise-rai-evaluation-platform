@@ -21,11 +21,16 @@ Key architectural characteristics include:
 
 # Component-Level Architecture
 
-> **Insert the Component-Level Architecture Diagram Here**
+<p align="center">
+  <img
+    src="../images/component_architecture.png"
+    alt="Enterprise AI Evaluation Platform - Component-Level Architecture"
+    width="1000"/>
+</p>
 
-```text
-docs/images/component_architecture.png
-```
+The diagram above illustrates the internal architecture of the Enterprise AI Evaluation Platform and the major components responsible for evaluation orchestration, configuration management, evaluator execution, evidence collection, reporting, governance, and platform services.
+
+Unlike the High-Level Architecture, which focuses on the overall evaluation lifecycle, this view describes **how the platform is organized internally** and how the different components collaborate to execute enterprise AI evaluations.
 
 ---
 
@@ -375,9 +380,10 @@ Each architecture document describes the platform from a different perspective.
 
 | Document | Focus |
 |----------|-------|
-| High-Level Architecture | What the platform does |
-| Component-Level Architecture | How the platform is built |
-| Evaluation Workflow | How an evaluation executes |
-| Architecture Walkthrough | How all components collaborate during execution |
+| [High-Level Architecture](high_level_architecture.md) | What the platform does |
+| [Component Architecture](component_architecture.md) | How the platform is built |
+| [Evaluation Workflow](evaluation_workflow.md) | How evaluations execute |
+| [Architecture Walkthrough](architecture_walkthrough.md) | How platform components collaborate |
+| [Design Principles](design_principles.md) | Engineering principles and architectural decisions |
 
 Together, these documents provide a complete view of the Enterprise AI Evaluation Platform.
