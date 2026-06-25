@@ -14,31 +14,43 @@ The current implementation includes baseline evaluators for truthfulness, reliab
 
 The repository includes supporting documentation that explains the platform architecture, design decisions, evaluation workflow, and supporting research.
 
-| Documentation                                                                    | Description                                              |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| 🏛 **[Enterprise Architecture](docs/architecture/enterprise_architecture.md)**   | High-level platform architecture and architectural views |
-| 🏗 **[Architecture Walkthrough](docs/architecture/architecture_walkthrough.md)** | End-to-end walkthrough of the evaluation lifecycle       |
-| 🔄 **[Evaluation Workflow](docs/architecture/evaluation_workflow.md)**           | Evaluation execution workflow                            |
-| 🧩 **[Design Principles](docs/architecture/design_principles.md)**               | Engineering principles guiding the framework             |
-| 📖 **[Research & Design Notes](docs/research/README.md)**                        | Research notes, interview insights, and future ideas     |
-| 💼 **[Enterprise AI Case Studies](docs/research/case_studies.md)**               | Analysis of real-world AI incidents and lessons learned  |
-
+| Documentation | Description |
+|---------------|-------------|
+| 🏛 **[High-Level Architecture](docs/architecture/high_level_architecture.md)** | Enterprise architecture overview |
+| 🧩 **[Component Architecture](docs/architecture/component_architecture.md)** | Internal platform components |
+| 🔄 **[Evaluation Workflow](docs/architecture/evaluation_workflow.md)** | End-to-end evaluation lifecycle |
+| 🚶 **[Architecture Walkthrough](docs/architecture/architecture_walkthrough.md)** | Guided explanation of the platform |
+| 🛠 **[Design Principles](docs/architecture/design_principles.md)** | Engineering principles and trade-offs |
+| 📚 **[Evaluator Catalog](docs/evaluation/evaluator_catalog.md)** | Catalog of implemented evaluators |
+| 💼 **[Enterprise AI Case Studies](docs/research/case_studies.md)** | Real-world AI incidents and lessons learned |
+| 🔬 **[Research Notes](docs/research/README.md)** | Research, interview insights, and future ideas |
 
 ---
 
-## Enterprise Platform Architecture
+## Platform Architecture
 
-The platform is organized around reusable framework components instead of application-specific evaluation pipelines.
+The Enterprise Responsible AI Evaluation Platform is organized as a set of reusable framework components that separate evaluation orchestration, benchmark execution, evaluator implementations, reporting, and governance capabilities.
 
-Core responsibilities are separated into independent layers for evaluation, benchmarking, reporting, and future governance capabilities. This makes it easier to introduce new evaluators and extend the framework without changing the overall architecture.
+The architecture is designed around modular components rather than application-specific pipelines, making it easier to introduce new evaluation domains, benchmark datasets, and reporting capabilities as the platform evolves.
+
+For a detailed walkthrough of the architecture, see the documentation linked above.
 
 <p align="center">
-    <img src="docs/architecture/enterprise_rai.png"
-         alt="Enterprise Responsible AI Evaluation Platform"
-         width="900"/>
+  <img
+    src="docs/images/high_level_architecture.png"
+    alt="Enterprise AI Evaluation Platform"
+    width="950"/>
 </p>
 
-For additional details, refer to the architecture documentation included in the repository.
+Explore the complete architecture:
+
+• [High-Level Architecture](docs/architecture/high_level_architecture.md)
+
+• [Component Architecture](docs/architecture/component_architecture.md)
+
+• [Architecture Walkthrough](docs/architecture/architecture_walkthrough.md)
+
+• [Evaluation Workflow](docs/architecture/evaluation_workflow.md)
 
 ---
 
@@ -211,7 +223,7 @@ Highlights include:
 * Standardized evaluation models
 * Extensible project structure
 
-The goal is to document not only the implementation, but also the architectural decisions behind it.
+The repository is intended to showcase both implementation and system design, illustrating how an enterprise AI evaluation platform can evolve from individual evaluators into a modular, extensible architecture.
 
 ---
 
