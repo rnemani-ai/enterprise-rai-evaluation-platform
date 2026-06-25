@@ -2,370 +2,245 @@
 
 ## Overview
 
-Organizations are rapidly adopting Generative AI applications such as Retrieval-Augmented Generation (RAG) assistants, customer support chatbots, document intelligence solutions, and emerging AI agents. While these systems can significantly improve productivity and operational efficiency, they also introduce new risks including hallucinations, biased behavior, privacy leakage, unsafe outputs, and inconsistent responses.
+The Enterprise Responsible AI Evaluation Platform is a modular framework for evaluating Generative AI systems across multiple Responsible AI risk domains.
 
-This project explores the design and implementation of an Enterprise Responsible AI Evaluation Platform that provides a reusable and standardized approach for assessing Generative AI applications across multiple risk domains.
+The framework provides a common foundation for implementing evaluators, executing benchmarks, standardizing evaluation results, and documenting architectural decisions. It brings together reusable framework components, benchmark datasets, supporting documentation, and representative use cases into a single repository.
 
-The platform is intentionally designed to be application-agnostic and focuses on evaluating AI risks rather than evaluating specific application types. This allows the same framework to be applied consistently across chatbots, RAG systems, document processing solutions, and future AI-powered applications.
-
-The objective is not to replace human judgment but to provide structured evaluation capabilities that support responsible deployment, governance, and continuous improvement of AI systems.
+The current implementation includes baseline evaluators for truthfulness, reliability, fairness, and safety, along with a benchmark framework and architecture documentation. The framework is structured to support additional evaluation techniques, reporting capabilities, and integrations as the project evolves.
 
 ---
 
-## Documentation
+## Architecture & Documentation
 
-* [Architecture](docs/architecture/enterprise_architecture.md)
-* [Evaluation Workflow](docs/architecture/evaluation_workflow.md)
-* [Evaluator Catalog](docs/evaluators/evaluator_catalog.md)
+The repository includes supporting documentation that captures the architectural decisions, evaluation workflows, and design considerations behind the framework.
 
----
+| Documentation                                                                  | Description                                 |
+| ------------------------------------------------------------------------------ | ------------------------------------------- |
+| 🏛 **[Enterprise Architecture](docs/architecture/enterprise_architecture.md)** | High-level platform architecture and design |
+| ⚙️ **[Technical Architecture](docs/architecture/technical_architecture.md)**   | Framework components and interactions       |
+| 🔄 **[Evaluation Workflow](docs/architecture/evaluation_workflow.md)**         | End-to-end evaluation process               |
+| 📊 **[Benchmark Framework](docs/architecture/benchmark_framework.md)**         | Benchmark design and execution              |
+| 💼 **[Case Studies](docs/case_studies/README.md)**                             | Example AI evaluation scenarios             |
+| 📚 **[Architecture Decisions](docs/architecture/design_decisions.md)**         | Architecture rationale and trade-offs       |
 
-## Enterprise Architecture
-
-The platform follows a risk-domain driven architecture designed to evaluate multiple Generative AI applications using a common Responsible AI framework.
-
-### Core Design Principles
-
-* Application Agnostic
-* Risk Based
-* Extensible
-* Governance Ready
-* Evidence Driven
-* Human Oversight
-
-The architecture separates:
-
-1. Evaluation orchestration
-2. Risk-domain evaluators
-3. Risk scoring and aggregation
-4. Evidence generation
-5. Governance workflows
-
-This separation enables organizations to evaluate diverse AI applications while maintaining consistent Responsible AI standards.
-
-![Enterprise Responsible AI Evaluation Platform](docs/architecture/enterprise_rai.png)
 
 ---
 
-## Why This Project?
+## Enterprise Platform Architecture
 
-Many Generative AI initiatives focus heavily on model selection, prompting strategies, and application development while giving limited attention to systematic evaluation and risk assessment.
+The platform is organized around reusable framework components instead of application-specific evaluation pipelines.
 
-As organizations deploy increasing numbers of AI-powered applications, Responsible AI practices become essential to ensure systems remain trustworthy, reliable, fair, and safe.
+Core responsibilities are separated into independent layers for evaluation, benchmarking, reporting, and future governance capabilities. This makes it easier to introduce new evaluators and extend the framework without changing the overall architecture.
 
-This project focuses on a practical enterprise challenge:
+<p align="center">
+    <img src="docs/architecture/enterprise_rai.png"
+         alt="Enterprise Responsible AI Evaluation Platform"
+         width="900"/>
+</p>
 
-> How can organizations consistently evaluate Responsible AI risks across multiple Generative AI applications using a reusable and standardized framework?
-
-The project demonstrates practical concepts including:
-
-* Responsible AI evaluation
-* Risk-based assessment
-* Evaluation orchestration
-* Fairness analysis
-* Safety assessment
-* Reliability testing
-* Extensible framework design
-* Human oversight and governance considerations
+For additional details, refer to the architecture documentation included in the repository.
 
 ---
 
-## Business Problem
+## Core Design Principles
 
-Enterprises are rapidly deploying Generative AI solutions across multiple business functions including:
+The framework has been built around a few guiding principles that have influenced both the architecture and the implementation.
 
-* Customer Service
-* Knowledge Management
-* Document Processing
-* Operations Support
-* Decision Assistance
-* Internal Productivity Tools
+### Standardized Evaluation
 
-Each application introduces potential risks that may impact business outcomes, customer trust, regulatory compliance, and organizational reputation.
+All evaluators follow a common request and result model, making evaluation outputs consistent across different risk domains.
 
-Examples include:
+### Modular Design
 
-* Hallucinated responses that provide incorrect information
-* Biased recommendations that impact fairness
-* Exposure of sensitive or personally identifiable information
-* Toxic or harmful content generation
-* Inconsistent behavior across similar inputs
-* Missing or incomplete responses in critical workflows
+Each evaluator is implemented independently, allowing new evaluation capabilities to be added without impacting existing components.
 
-Today, evaluation approaches are often fragmented across teams, resulting in:
+### Benchmark-Driven Development
 
-* Inconsistent evaluation methodologies
-* Duplicate effort across projects
-* Limited comparability across applications
-* Difficulty operationalizing Responsible AI practices
-* Challenges supporting governance and compliance initiatives
+Benchmark datasets are treated as part of the framework rather than as standalone examples, enabling consistent validation of evaluators.
 
-Organizations require a reusable evaluation platform capable of providing standardized assessments across diverse Generative AI systems.
+### Separation of Concerns
+
+Evaluation logic, orchestration, benchmarks, datasets, reporting, and documentation are maintained independently to keep the framework easy to extend.
+
+### Documentation Alongside Code
+
+Architecture diagrams, workflows, design decisions, and case studies are maintained alongside the implementation to provide context beyond the source code.
 
 ---
 
-## Challenges
-
-Building a reusable Responsible AI evaluation capability introduces several challenges.
-
-### Diverse Application Types
-
-Organizations deploy multiple forms of Generative AI applications including:
-
-* RAG Assistants
-* Customer Support Chatbots
-* Document Intelligence Systems
-* Workflow Assistants
-* Agentic AI Systems
-
-Each application behaves differently while sharing common Responsible AI risks.
-
-### Inconsistent Evaluation Standards
-
-Different teams often define and measure AI quality differently, making it difficult to compare systems consistently.
-
-### Rapidly Evolving AI Landscape
-
-Models, prompting strategies, retrieval architectures, and agent frameworks evolve rapidly, requiring evaluation systems that remain adaptable.
-
-### Lack of Standardized Risk Assessment
-
-Organizations need a common language for evaluating and communicating AI risk across technical and business stakeholders.
-
----
-
-## Proposed Solution
-
-The proposed solution is an Enterprise Responsible AI Evaluation Platform designed around reusable risk domains rather than application-specific evaluation logic.
-
-The platform evaluates AI systems across reusable risk domains and aggregates results into standardized risk assessments that support governance, reporting, and human decision-making.
-
-The platform evaluates AI systems across standardized categories including:
-
-* Truthfulness
-* Reliability
-* Fairness
-* Safety
-
-Each category contains modular evaluators that can be independently developed, tested, and extended over time.
-
-This design enables organizations to:
-
-* Evaluate multiple AI applications consistently
-* Compare risk profiles across systems
-* Establish common evaluation standards
-* Support future governance and monitoring initiatives
-
----
-
-## Architecture Decisions
-
-Several architectural approaches were considered before selecting the current design.
-
-### Why Not Application-Specific Evaluators?
-
-A separate evaluation framework for each application type introduces duplication and inconsistency.
-
-Instead, the platform evaluates common risk domains that apply across multiple application categories.
-
-### Why Risk Domains Instead of Application Types?
-
-A hallucination remains a hallucination whether it originates from:
-
-* A Chatbot
-* A RAG Assistant
-* A Document Processing Workflow
-* An AI Agent
-
-Organizing evaluations around risk domains creates a reusable and extensible architecture.
-
-### Why a Plug-In Architecture?
-
-Responsible AI requirements continue to evolve.
-
-New evaluators should be added without requiring modifications to the core orchestration framework.
-
-### Why Human Review?
-
-Evaluation results should support decision-making rather than replace human judgment.
-
-Human oversight remains critical when evaluating high-risk AI applications.
-
----
-
-## Risk Domains
-
-### Truthfulness
-
-Evaluates whether generated responses are factually supported and relevant.
-
-Planned evaluators:
-
-* Groundedness
-* Hallucination Detection
-* Answer Relevance
-* Citation Accuracy
-
-### Reliability
-
-Evaluates behavioral stability and robustness.
-
-Planned evaluators:
-
-* Consistency
-* Robustness
-* Completeness
-
-### Fairness
-
-Evaluates whether outputs exhibit unfair treatment across demographic groups.
-
-Planned evaluators:
-
-* Demographic Bias
-* Fairness Consistency
-
-### Safety
-
-Evaluates harmful or sensitive outputs.
-
-Planned evaluators:
-
-* Toxicity Detection
-* PII Leakage Detection
-
-### Security (Future Phase)
-
-Evaluates adversarial and security-related risks associated with Generative AI systems.
-
-Planned evaluators:
-
-* Prompt Injection Detection
-* Jailbreak Detection
-* Secrets Exposure Detection
-* Data Leakage Analysis
-
----
-
-## Repository Structure
+## Repository Organization
 
 ```text
 enterprise-rai-evaluation-platform/
 
-├── README.md
-│
-├── docs/
-│   ├── architecture/
-│   ├── design_decisions/
-│   └── evaluator_catalog.md
+├── core/
+│   Shared framework abstractions
 │
 ├── evaluators/
-│   ├── truthfulness/
-│   ├── reliability/
-│   ├── fairness/
-│   └── safety/
+│   Responsible AI evaluators organized by domain
 │
-├── orchestration/
-│
-├── risk_engine/
+├── benchmarks/
+│   Benchmark execution framework
 │
 ├── datasets/
+│   Sample benchmark datasets
+│
+├── docs/
+│   Architecture, workflows, case studies, and research
 │
 ├── examples/
+│   Example AI evaluation scenarios
+│
+├── integrations/
+│   External framework integrations
+│
+├── runners/
+│   Benchmark runners
 │
 └── tests/
+│   Unit and integration tests
 ```
+
+The repository is organized around reusable platform capabilities, making it easier to extend the framework as new evaluators, benchmarks, and integrations are added.
 
 ---
 
-## Current Status
+## Current Implementation
 
-### Phase 1 (Current Scope)
+### Framework Components
 
-#### Architecture & Design
+* Standardized evaluation request and result models
+* Modular evaluator architecture
+* Benchmark execution framework
+* Dataset loading utilities
+* Risk classification
+* Evaluation orchestration
 
-* Project vision
-* Business problem definition
-* Enterprise architecture
-* Evaluation workflow
-* Evaluator catalog
-* Risk domain definitions
+### Implemented Evaluators
 
-#### Framework Components
+**Truthfulness**
 
-* EvaluationResult contract
-* BaseEvaluator abstraction
-* GroundednessEvaluator (initial implementation)
-* Evaluation Orchestrator
-* Risk Aggregation Engine
+* Groundedness
+* Hallucination
+* Answer Relevance
+* Citation Accuracy
 
-#### Documentation
+**Reliability**
 
-* Architecture documentation
-* Evaluation workflow documentation
-* Evaluator catalog
+* Completeness
 
-### In Progress
+**Fairness**
 
-* Groundedness evaluation logic
-* Hallucination evaluator
-* Demographic bias evaluator
-* PII leakage evaluator
-* Domain-level risk scoring
-* Test datasets
+* Bias
+
+**Safety**
+
+* Toxicity
+* PII Leakage
+* Prompt Injection
+
+### Currently in Progress
+
+* Enterprise reporting
+* Evaluation sessions
+* Evaluator registry
+* Enhanced benchmark reporting
+* HTML report generation
+
+## Responsible AI Evaluation Domains
+
+The framework organizes evaluators into reusable Responsible AI domains instead of application-specific pipelines. This allows the same evaluation approach to be applied consistently across different AI applications while keeping individual evaluators modular and independent.
+
+| Domain           | Focus                              | Current Evaluators                                               |
+| ---------------- | ---------------------------------- | ---------------------------------------------------------------- |
+| **Truthfulness** | Factual correctness and grounding  | Groundedness, Hallucination, Answer Relevance, Citation Accuracy |
+| **Reliability**  | Response quality and completeness  | Completeness                                                     |
+| **Fairness**     | Bias and equitable behavior        | Bias                                                             |
+| **Safety**       | Harmful content and security risks | Toxicity, PII Leakage, Prompt Injection                          |
+| **Governance**   | Auditability and compliance        | Planned                                                          |
+| **Operational**  | Runtime quality and monitoring     | Planned                                                          |
+
+---
+
+## Benchmark Framework
+
+The benchmark framework provides a consistent way to validate evaluators using representative datasets.
+
+The current implementation includes:
+
+* Standardized benchmark datasets
+* Dataset loading utilities
+* Benchmark execution framework
+* Standardized evaluation requests and results
+* Risk classification
+* Benchmark summaries
+
+The framework has been designed so that additional evaluators and datasets can be added without changing the benchmark execution process.
+
+---
+
+## Example Applications
+
+The framework is application-agnostic and can be applied across different Generative AI solutions.
+
+Example scenarios include:
+
+* Retrieval-Augmented Generation (RAG)
+* Document Intelligence
+* Enterprise Knowledge Assistants
+* Customer Support Chatbots
+* AI Copilots
+* Agentic AI Systems *(future exploration)*
+
+These examples demonstrate how a common evaluation framework can be reused across different AI applications while maintaining consistent evaluation standards.
+
+---
+
+## Repository Highlights
+
+Some parts of this repository go beyond the evaluator implementations themselves.
+
+Highlights include:
+
+* Enterprise and technical architecture documentation
+* Architecture diagrams and evaluation workflows
+* Benchmark framework
+* Case studies
+* Design decisions
+* Modular evaluator architecture
+* Standardized evaluation models
+* Extensible project structure
+
+The goal is to document not only the implementation, but also the architectural decisions behind it.
 
 ---
 
 ## Roadmap
 
-### Phase 1 – Core Responsible AI Evaluation
+The project continues to evolve incrementally.
 
-Current implementation scope:
+### Current Focus
 
-* Evaluation Orchestrator
-* Evaluator Engine
-* Risk Scoring Engine
-* Truthfulness Domain
-* Reliability Domain
-* Fairness Domain
-* Safety Domain
-* Evaluator Library
-* Evaluation Datasets
+* Expand evaluator coverage
+* Improve benchmark quality
+* Strengthen reporting capabilities
+* Refine framework architecture
 
-### Phase 2 – Reporting & Evidence
+### Future Areas
 
-Planned:
+* Semantic similarity evaluation
+* LLM-as-a-Judge evaluators
+* Advanced benchmark datasets
+* Evaluation dashboards
+* Additional Responsible AI domains
+* Integration with external evaluation frameworks
 
-* Evaluation Reports
-* Evidence Repository
-* Storage Layer
-* Dashboards
-* Advanced Integrations
-
-### Phase 3 – Governance & Human Oversight
-
-Planned:
-
-* Governance Workflow
-* Human Review & Approvals
-* Audit Logs
-* Compliance Reporting
-* Enterprise Governance Dashboard
-
-### Phase 4 – Monitoring & Operations
-
-Planned:
-
-* Monitoring & Observability
-* Model Registry Integration
-* CI/CD Automation
-* Continuous Evaluation
-* Alerting & Notifications
+The roadmap will continue to evolve as new evaluation techniques and Responsible AI practices emerge.
 
 ---
 
-## Disclaimer
+## Repository Purpose
 
-This repository is a learning and portfolio project intended to demonstrate enterprise Responsible AI architecture, evaluation frameworks, governance concepts, and risk-based evaluation strategies.
+This repository is intended as an engineering project that explores how Responsible AI evaluation can be organized into a reusable and extensible framework.
 
-The implementation is not intended for production use without additional security, governance, observability, compliance, privacy, and operational controls.
+It combines software engineering practices, Responsible AI concepts, benchmark-driven development, and architecture documentation into a single project that can continue evolving as the Responsible AI landscape matures.
