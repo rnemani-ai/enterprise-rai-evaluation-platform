@@ -12,16 +12,16 @@ The current implementation includes baseline evaluators for truthfulness, reliab
 
 ## Architecture & Documentation
 
-The repository includes supporting documentation that captures the architectural decisions, evaluation workflows, and design considerations behind the framework.
+The repository includes supporting documentation that explains the platform architecture, design decisions, evaluation workflow, and supporting research.
 
-| Documentation                                                                  | Description                                 |
-| ------------------------------------------------------------------------------ | ------------------------------------------- |
-| 🏛 **[Enterprise Architecture](docs/architecture/enterprise_architecture.md)** | High-level platform architecture and design |
-| ⚙️ **[Technical Architecture](docs/architecture/technical_architecture.md)**   | Framework components and interactions       |
-| 🔄 **[Evaluation Workflow](docs/architecture/evaluation_workflow.md)**         | End-to-end evaluation process               |
-| 📊 **[Benchmark Framework](docs/architecture/benchmark_framework.md)**         | Benchmark design and execution              |
-| 💼 **[Case Studies](docs/case_studies/README.md)**                             | Example AI evaluation scenarios             |
-| 📚 **[Architecture Decisions](docs/architecture/design_decisions.md)**         | Architecture rationale and trade-offs       |
+| Documentation                                                                    | Description                                              |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| 🏛 **[Enterprise Architecture](docs/architecture/enterprise_architecture.md)**   | High-level platform architecture and architectural views |
+| 🏗 **[Architecture Walkthrough](docs/architecture/architecture_walkthrough.md)** | End-to-end walkthrough of the evaluation lifecycle       |
+| 🔄 **[Evaluation Workflow](docs/architecture/evaluation_workflow.md)**           | Evaluation execution workflow                            |
+| 🧩 **[Design Principles](docs/architecture/design_principles.md)**               | Engineering principles guiding the framework             |
+| 📖 **[Research & Design Notes](docs/research/README.md)**                        | Research notes, interview insights, and future ideas     |
+| 💼 **[Enterprise AI Case Studies](docs/research/case_studies.md)**               | Analysis of real-world AI incidents and lessons learned  |
 
 
 ---
