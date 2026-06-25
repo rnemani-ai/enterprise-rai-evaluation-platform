@@ -2,11 +2,15 @@
 
 ## Overview
 
+## Overview
+
 The Enterprise Responsible AI Evaluation Platform is a modular framework for evaluating Generative AI systems across multiple Responsible AI risk domains.
+
+The goal of this repository is not simply to implement individual evaluators, but to explore how enterprise AI evaluation can be standardized, governed, and organized into a reusable platform that supports multiple AI systems.
 
 As organizations adopt multiple AI applications, evaluation often becomes fragmented across teams, tools, and use cases. This project explores how a common evaluation platform can standardize evaluation through reusable evaluators, benchmark-driven execution, consistent evaluation models, and shared architectural patterns.
 
-The framework is intentionally application-agnostic. Rather than evaluating foundation models in isolation, it is designed to evaluate complete AI systems, including retrieval pipelines, prompts, generated responses, safety controls, benchmark datasets, and governance evidence. This allows the same evaluation framework to be applied consistently across chatbots, Retrieval-Augmented Generation (RAG) systems, document intelligence solutions, AI agents, and future AI-powered applications.
+The framework is intentionally application-agnostic because many Responsible AI concerns such as truthfulness, safety, fairness, operational quality, and governance are common across different AI applications. By standardizing these evaluation capabilities, the same framework can be applied consistently across chatbots, Retrieval-Augmented Generation (RAG) systems, document intelligence solutions, AI agents, and future AI-powered applications.
 
 The current implementation establishes the core platform through modular evaluators, benchmark execution, standardized evaluation contracts, and supporting architecture documentation. The framework is structured to support additional evaluation techniques, reporting capabilities, and external integrations as it evolves.
 
