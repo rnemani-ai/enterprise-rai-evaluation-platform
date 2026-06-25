@@ -4,9 +4,11 @@
 
 The Enterprise Responsible AI Evaluation Platform is a modular framework for evaluating Generative AI systems across multiple Responsible AI risk domains.
 
-The framework provides a common foundation for implementing evaluators, executing benchmarks, standardizing evaluation results, and documenting architectural decisions. It brings together reusable framework components, benchmark datasets, supporting documentation, and representative use cases into a single repository.
+As organizations adopt multiple AI applications, evaluation often becomes fragmented across teams, tools, and use cases. This project explores how a common evaluation platform can standardize evaluation through reusable evaluators, benchmark-driven execution, consistent evaluation models, and shared architectural patterns.
 
-The current implementation includes baseline evaluators for truthfulness, reliability, fairness, and safety, along with a benchmark framework and architecture documentation. The framework is structured to support additional evaluation techniques, reporting capabilities, and integrations as the project evolves.
+The framework is intentionally application-agnostic. Rather than evaluating foundation models in isolation, it is designed to evaluate complete AI systems, including retrieval pipelines, prompts, generated responses, safety controls, benchmark datasets, and governance evidence. This allows the same evaluation framework to be applied consistently across chatbots, Retrieval-Augmented Generation (RAG) systems, document intelligence solutions, AI agents, and future AI-powered applications.
+
+The current implementation establishes the core platform through modular evaluators, benchmark execution, standardized evaluation contracts, and supporting architecture documentation. The framework is structured to support additional evaluation techniques, reporting capabilities, and external integrations as it evolves.
 
 ---
 
@@ -29,9 +31,9 @@ The repository includes supporting documentation that explains the platform arch
 
 ## Platform Architecture
 
-The Enterprise Responsible AI Evaluation Platform is organized as a set of reusable framework components that separate evaluation orchestration, benchmark execution, evaluator implementations, reporting, and governance capabilities.
+The Enterprise Responsible AI Evaluation Platform provides a common foundation for evaluation orchestration, benchmark execution, evaluator implementations, evidence collection, reporting, and governance.
 
-The architecture is designed around modular components rather than application-specific pipelines, making it easier to introduce new evaluation domains, benchmark datasets, and reporting capabilities as the platform evolves.
+The architecture is organized around reusable platform components rather than application-specific pipelines, allowing different AI applications to share the same evaluation workflow while supporting organization-specific evaluation policies and future integrations.
 
 For a detailed walkthrough of the architecture, see the documentation linked above.
 
@@ -176,7 +178,7 @@ The framework organizes evaluators into reusable Responsible AI domains instead 
 
 ## Benchmark Framework
 
-The benchmark framework provides a consistent way to validate evaluators using representative datasets.
+The framework is designed to complement existing evaluation ecosystems rather than replace them. Built-in evaluators can operate alongside external frameworks such as RAGAS, DeepEval, LangSmith, and OpenAI Evals while sharing a common orchestration, reporting, and benchmark infrastructure.
 
 The current implementation includes:
 
@@ -253,6 +255,6 @@ The roadmap will continue to evolve as new evaluation techniques and Responsible
 
 ## Repository Purpose
 
-This repository is intended as an engineering project that explores how Responsible AI evaluation can be organized into a reusable and extensible framework.
+This repository explores how Responsible AI evaluation can be organized into a reusable enterprise platform rather than a collection of independent evaluation scripts.
 
-It combines software engineering practices, Responsible AI concepts, benchmark-driven development, and architecture documentation into a single project that can continue evolving as the Responsible AI landscape matures.
+The primary focus is on modular architecture, standardized evaluation contracts, benchmark-driven development, and documentation that explains both the implementation and the engineering decisions behind the framework.
